@@ -1,0 +1,14 @@
+{
+  "name": "com.llib.pointer",
+  "version": "1.0.0",
+  "displayName": "Pointer Manager",
+  "description": "Input System\ub97c \ud1b5\ud574 \ud3ec\uc778\ud130 \ud589\ub3d9\uc744 \uc9c0\uc815\ud558\uace0 \uadf8\uc5d0 \ub300\ud55c \uc815\ubcf4\ub97c \uc81c\uacf5\ud569\ub2c8\ub2e4.",
+  "unity": "2022.0",
+  "author": {
+    "name": "LUMOS",
+    "email": "lumos5934@gmail.com"
+  },
+ "dependencies": {
+   "com.unity.inputsystem": "1.7.0"
+ }
+}
