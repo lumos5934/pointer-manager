@@ -6,7 +6,7 @@ namespace LLib.Editor
     public static class PointerManagerMenu
     {
         [MenuItem("GameObject/Input/Pointer Manager", false, 10)]
-        public static void CreateAudioManager()
+        public static void CreatePointerManager()
         {
             CreateObject<PointerManager>("PointerManager");
         }

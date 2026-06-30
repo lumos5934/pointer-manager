@@ -2,13 +2,13 @@
   "name": "com.llib.pointer",
   "version": "1.0.0",
   "displayName": "Pointer Manager",
-  "description": "Input System\ub97c \ud1b5\ud574 \ud3ec\uc778\ud130 \ud589\ub3d9\uc744 \uc9c0\uc815\ud558\uace0 \uadf8\uc5d0 \ub300\ud55c \uc815\ubcf4\ub97c \uc81c\uacf5\ud569\ub2c8\ub2e4.",
+  "description": "Input System \uae30\ubc18\uc73c\ub85c \ud3ec\uc778\ud130(\ub9c8\uc6b0\uc2a4/\ud130\uce58)\uc758 \uc704\uce58, \ud074\ub9ad \uc0c1\ud0dc\ub97c \ud55c \uacf3\uc5d0\uc11c \uad00\ub9ac\ud569\ub2c8\ub2e4.",
   "unity": "2022.0",
   "author": {
     "name": "LUMOS",
     "email": "lumos5934@gmail.com"
   },
- "dependencies": {
-   "com.unity.inputsystem": "1.7.0"
- }
+  "dependencies": {
+    "com.unity.inputsystem": "1.7.0"
+  }
 }
