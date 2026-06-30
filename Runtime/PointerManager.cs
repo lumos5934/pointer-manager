@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
@@ -12,27 +12,15 @@ namespace LLib
 
         private Vector2 _prevPosition;
         
-        public static PointerManager Instance { get; private set; }
-
         public Vector2 Position { get; private set; }
         public Vector2 Delta { get; private set; }
         public bool IsDown { get; private set; }
         public bool IsHold { get; private set; }
         public bool IsUp { get; private set; }
-        public float HoldTime { get; private set; }
 
 
         private void Awake()
         {
-            if (Instance != null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-
             _positionReference?.action.Enable();
             _clickReference?.action.Enable();
 
@@ -43,19 +31,8 @@ namespace LLib
         {
             InputSystem.onAfterUpdate -= OnInputUpdate;
         }
-
-        private void Update()
-        {
-            if (IsHold)
-            {
-                HoldTime += Time.deltaTime;
-                return;
-            }
-            
-            HoldTime = 0f;
-        }
         
-        public bool IsOverEventSystem()
+        public bool IsOverUI()
         {
             if (EventSystem.current == null)
                 return false;
@@ -63,6 +40,34 @@ namespace LLib
             return EventSystem.current.IsPointerOverGameObject();
         }
 
+        public List<RaycastResult> HitUI()
+        {
+            var eventData = new PointerEventData(EventSystem.current)
+            {
+                position = Position,
+            };
+
+            var results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventData, results);
+
+            return results;
+        }
+        
+        public RaycastHit2D Hit2D(Camera cam, LayerMask mask = default)
+        {
+            Vector2 world = cam.ScreenToWorldPoint(Position);
+
+            return Physics2D.Raycast(world, Vector2.zero, Mathf.Infinity, mask);
+        }
+        
+        public RaycastHit Hit3D(Camera cam, LayerMask mask = default)
+        {
+            var ray =  cam.ScreenPointToRay(Position);
+            
+            Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, mask);
+            return hit;
+        }
+        
         private void OnInputUpdate()
         {
             if (_positionReference != null)
